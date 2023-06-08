@@ -20,6 +20,7 @@ public class BLEManager : MonoBehaviour
     public static int stepCount = 0;
     int Heartbeat = 0;
     int stepCountPast = 0;
+    int punch = 0;
     // int stepCountPastPast = 0;
     // int HeartbeatPast = 0;
     float velocity = 0.0f;
@@ -41,6 +42,7 @@ public class BLEManager : MonoBehaviour
         an_Player = Player.GetComponent<Animator>();
         InvokeRepeating("UpdateRunning", 0, 0.5f);
         InvokeRepeating("UpdateVelocity", 0, 2.0f);
+        InvokeRepeating("UpdatePunch", 0, 0.2f);
     }
 
     // Update is called once per frame
@@ -144,6 +146,7 @@ public class BLEManager : MonoBehaviour
                     string[] q12 = Encoding.UTF8.GetString(res.buf, 0, res.size).Split(',');
                     stepCount = int.Parse(q12[0]);
                     Heartbeat = int.Parse(q12[1]);
+                    punch = int.Parse(q12[2]);
                     // subcribeText1.text = q12[0];
                     heartBeatText.text = q12[1];
                     // subcribeText2.text = stepCountPast.ToString();
@@ -205,6 +208,18 @@ public class BLEManager : MonoBehaviour
             isScanningDevices = false;
             BleApi.StopDeviceScan();
         }
+    }
+
+    void UpdatePunch()
+    {
+        if(punch == 1)
+        {
+           int punchMotion_ = Random.Range(0, 2);
+           float punchMotion = (float)punchMotion_;
+           an_Player.SetFloat("PunchMotion", punchMotion);
+           an_Player.SetTrigger("Punch");
+        }
+
     }
 
     public void DisconnectWatch()

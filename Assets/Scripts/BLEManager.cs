@@ -40,6 +40,7 @@ public class BLEManager : MonoBehaviour
         heartBeatText.text = "0";
         stateManager.text = "";
         an_Player = Player.GetComponent<Animator>();
+        an_Player.SetLayerWeight(1,0);
         InvokeRepeating("UpdateRunning", 0, 0.5f);
         InvokeRepeating("UpdateVelocity", 0, 2.0f);
         InvokeRepeating("UpdatePunch", 0, 0.2f);
@@ -154,7 +155,6 @@ public class BLEManager : MonoBehaviour
             }
         }
 
-        // an_Player.SetFloat("Velocity", PlayerControl.velocity);
         an_Player.SetFloat("Velocity", velocity);
     }
 
@@ -212,12 +212,15 @@ public class BLEManager : MonoBehaviour
 
     void UpdatePunch()
     {
-        if(punch == 1)
+        if (an_Player.GetLayerWeight(1) == 1)
         {
-           int punchMotion_ = Random.Range(0, 2);
-           float punchMotion = (float)punchMotion_;
-           an_Player.SetFloat("PunchMotion", punchMotion);
-           an_Player.SetTrigger("Punch");
+            if(punch == 1)
+            {
+            int punchMotion_ = Random.Range(0, 2);
+            float punchMotion = (float)punchMotion_;
+            an_Player.SetFloat("PunchMotion", punchMotion);
+            an_Player.SetTrigger("Punch");
+            }
         }
 
     }

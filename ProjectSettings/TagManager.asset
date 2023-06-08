@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - VerticalWall
+  - Hand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hand
   - Water
   - UI
   - 

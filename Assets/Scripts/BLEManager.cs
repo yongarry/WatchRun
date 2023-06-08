@@ -185,7 +185,6 @@ public class BLEManager : MonoBehaviour
     void UpdateRunning()
     {
         stepCountPast = stepCount;
-        // Debug.Log(velocity);
     }
 
     private void OnApplicationQuit()
@@ -210,6 +209,9 @@ public class BLEManager : MonoBehaviour
 
     public void DisconnectWatch()
     {
+        isScanningDevices = false;
+        isScanningServices = false;
+        isScanningCharacteristics = false;
         isSubscribed = false;
         stateManager.text = "Watch Disconnected";
     }

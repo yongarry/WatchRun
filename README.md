@@ -20,5 +20,11 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 - [BLE Window API](https://github.com/adabru/BleWinrtDll)
 
 ## Hardware
+**Used hardware**
+- Arduino Nano 33 BLE
+- DFRobot heart rate sensor (SEN0203)
+- YwRobot OLED display module DIS060010 (Driver IC: SSD1306)
+- TP4056: Battery Charge module
+- Lithium Polymer Battery
 
 ## How to Use

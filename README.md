@@ -27,6 +27,12 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 - TP4056: Battery Charge module
 - Lithium Polymer Battery
 
+**CAD Design**
+<p align="center">
+<img width="40%" height="40%" alt="cad" src="https://github.com/yongarry/WatchRun/assets/71639336/d80c0508-53a3-4269-b7c2-df7d5f0589eb">
+</p>
+STL files will be uploaded.
+
 **Arduino**
 - Library Dependency
     - ArduinoBLE.h
@@ -34,6 +40,7 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
     - Adafruit_SSD1306.h
     - DFRobot_Heartrate.h
     - Scheduler.h
+
 - Code
 ```c
 #include <ArduinoBLE.h>

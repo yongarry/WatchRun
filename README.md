@@ -27,4 +27,8 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 - TP4056: Battery Charge module
 - Lithium Polymer Battery
 
+**Arduino**
+Library Dependency
+- 
+
 ## How to Use

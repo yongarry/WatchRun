@@ -28,7 +28,11 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 - Lithium Polymer Battery
 
 **Arduino**
-Library Dependency
-- 
+- Library Dependency
+-- ArduinoBLE.h
+-- Arduino_LSM9DS1.h
+-- Adafruit_SSD1306.h
+-- DFRobot_Heartrate.h
+-- Scheduler.h
 
 ## How to Use

@@ -29,10 +29,10 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 
 **Arduino**
 - Library Dependency
--- ArduinoBLE.h
--- Arduino_LSM9DS1.h
--- Adafruit_SSD1306.h
--- DFRobot_Heartrate.h
--- Scheduler.h
+    - ArduinoBLE.h
+    - Arduino_LSM9DS1.h
+    - Adafruit_SSD1306.h
+    - DFRobot_Heartrate.h
+    - Scheduler.h
 
 ## How to Use

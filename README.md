@@ -9,23 +9,16 @@ WatchRun is an immersive game designed for smartwatch that combines real-life ph
 
 ## Dependency
 **Used Asset**
-
-[Modular Animated Wood Panel Wall Kit](https://assetstore.unity.com/packages/3d/environments/modular-animated-wood-panel-wall-kit-vertical-wall-destructible--178400)
-[Buttons Set](https://assetstore.unity.com/packages/2d/gui/buttons-set-211824)
-
-[Realistic Tree 9 [Rainbow Tree]](https://assetstore.unity.com/packages/3d/vegetation/trees/realistic-tree-9-rainbow-tree-54622)
-
-
-
-
-
-
-[Grass Flowers Pack Free](https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-flowers-pack-free-138810)
-
-[VIS - PBR Grass Textures](https://assetstore.unity.com/packages/2d/textures-materials/floors/vis-pbr-grass-textures-198071)
-
-[Road Architect](https://github.com/MicroGSD/RoadArchitect)
+- [Modular Animated Wood Panel Wall Kit](https://assetstore.unity.com/packages/3d/environments/modular-animated-wood-panel-wall-kit-vertical-wall-destructible--178400)
+- [Buttons Set](https://assetstore.unity.com/packages/2d/gui/buttons-set-211824)
+- [Realistic Tree 9 [Rainbow Tree]](https://assetstore.unity.com/packages/3d/vegetation/trees/realistic-tree-9-rainbow-tree-54622)
+- [Grass Flowers Pack Free](https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-flowers-pack-free-138810)
+- [VIS - PBR Grass Textures](https://assetstore.unity.com/packages/2d/textures-materials/floors/vis-pbr-grass-textures-198071)
+- [Road Architect](https://github.com/MicroGSD/RoadArchitect)
 
 **Used API**
+- [BLE Window API](https://github.com/adabru/BleWinrtDll)
 
-[BLE Window API](https://github.com/adabru/BleWinrtDll)
+## Hardware
+
+## How to Use

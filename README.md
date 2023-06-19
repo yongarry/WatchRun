@@ -56,6 +56,7 @@ STL files will be uploaded.
 
 #define heartratePin A3
 
+// change to your personal SSID
 BLEService pedoService("5db62101-443a-4599-83cd-af276d691eab");
 BLEStringCharacteristic pedoCount("b9da07a9-85a0-4d4a-8ae2-9d05a973f9ab", BLERead | BLENotify, 15);
 
@@ -86,21 +87,31 @@ int oldStepCount = 0;
 int rate = 0;
 bool btconnected = false;
 bool heartScanning = true;
+bool punch = false;
 
 void updatePedoCount(){
   float x,y,z;
   if (IMU.accelerationAvailable()){
     IMU.readAcceleration(x,y,z);
   }
-  float accVector;
-  accVector = pow(x,2) + pow(y,2) + pow(z,2);
-  if (accVector > 4.5)
+  float accVector, punch_check;
+  // accVector = pow(x,2) + pow(y,2) + pow(z,2);
+  accVector = pow(y,2);
+  punch_check = pow(x,2);
+  if (accVector > 2)
   {
     stepCount++;
-    Serial.println(stepCount);
+    // Serial.println(stepCount);
   }
+  // Serial.println(punch_check);
+  if (punch_check > 2.5)
+    punch = true;
+  else
+    punch = false;
+
+
   // if (stepCount != oldStepCount) {
-  pedoCount.writeValue(String(stepCount)+","+String(rate));
+  pedoCount.writeValue(String(stepCount) + "," + String(rate) + "," + String(punch));
     // oldStepCount = stepCount;
   // }
 }
@@ -141,30 +152,18 @@ void displayFunction()
 }
 
 void displayStart()
-{  
+{
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(20,30);
   if(!btconnected)
-  {
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(20,30);
-
     display.print("BT Disconnected");
-    display.display();
-  }
-}
+  else
+    display.print("BT Connected");
 
-// void btstart()
-// {
-//   display.clearDisplay();
-//   display.setTextSize(1);
-//   display.setTextColor(SSD1306_WHITE);
-//   display.setCursor(20,30);
-//   display.print("BT Connected");
-//   display.display();
-//   delay(1000);
-//   btconnected = true;
-// }
+  display.display();
+}
 
 
 void setup() {
@@ -182,7 +181,56 @@ void setup() {
     Serial.println("Failed to initialize IMU!");
     while (1);
   }
-  //////////////////////
+  //////////////////////BLE SETUP//////////////////////////
+  if (!BLE.begin()) {
+    Serial.println("starting BLE failed!");
+    while (1);
+  }
+ 
+  BLE.setLocalName("YongWatch");
+  BLE.setAdvertisedService(pedoService);
+  pedoService.addCharacteristic(pedoCount);
+
+  BLE.addService(pedoService);
+  BLE.advertise();
+  Serial.println("Bluetooth device active, waiting for connections...");
+
+  //////////////////////Thread Setup///////////////////////
+  Scheduler.startLoop(loop2);
+  Scheduler.startLoop(loop3);
+}
+
+void loop() {
+  
+  BLEDevice central = BLE.central();
+  if (central) {
+//    Serial.print("Connected to central: ");
+//    Serial.println(central.address());
+    btconnected = true;
+    displayStart();
+    delay(1000);
+    while (central.connected()) {
+      updatePedoCount();
+      delay(150);
+    }
+    Serial.print("Disconnected from central: ");
+    Serial.println(central.address());
+    stepCount = 0;
+    rate = 0;
+    btconnected = false;
+  }
+}
+
+void loop2() {
+  checkHeartRate();
+}
+
+void loop3() {
+  if(!btconnected)
+    displayStart();
+  else
+    displayFunction();
+}
 ```
 
 ## How to Use
